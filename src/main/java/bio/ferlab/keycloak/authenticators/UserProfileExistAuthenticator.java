@@ -25,8 +25,8 @@ public class UserProfileExistAuthenticator implements Authenticator {
     @Override
     public void authenticate(AuthenticationFlowContext context) {
         AuthenticatorConfigModel config = context.getAuthenticatorConfig();
-        String userApi = config.getConfig().get("user.profile.api.uri");
-        List<String> excludedClients = Arrays.asList(config.getConfig().get("user.profile.excluded.clients").split(","));
+        String userApi = config.getConfig().get("userProfileApiUri");
+        List<String> excludedClients = Arrays.asList(config.getConfig().get("excludedClients").split(","));
 
         String clientId = context.getAuthenticationSession().getClient().getClientId();
 
@@ -34,7 +34,7 @@ public class UserProfileExistAuthenticator implements Authenticator {
             if (excludedClients.contains(clientId) || userExists(context, userApi)) {
                 context.success();
             } else {
-                String errorMessage = config.getConfig().get("user.profile.error.message");
+                String errorMessage = config.getConfig().get("errorMessage");
                 context.forkWithErrorMessage(new FormMessage(errorMessage));
             }
 

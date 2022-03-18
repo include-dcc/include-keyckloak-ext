@@ -51,19 +51,19 @@ public class UserProfileExistAuthenticatorFactory implements AuthenticatorFactor
 
     static {
         ProviderConfigProperty userProfileUri = new ProviderConfigProperty();
-        userProfileUri.setName("user.profile.api.uri");
+        userProfileUri.setName("userProfileApiUri");
         userProfileUri.setLabel("URI of user profile api");
         userProfileUri.setType(ProviderConfigProperty.STRING_TYPE);
         configProperties.add(userProfileUri);
 
         ProviderConfigProperty errorMessage = new ProviderConfigProperty();
-        errorMessage.setName("user.profile.error.message");
+        errorMessage.setName("errorMessage");
         errorMessage.setLabel("Message to display to users if profile does not exist");
         errorMessage.setType(ProviderConfigProperty.STRING_TYPE);
         configProperties.add(errorMessage);
 
         ProviderConfigProperty excludedClient = new ProviderConfigProperty();
-        excludedClient.setName("user.profile.excluded.clients");
+        excludedClient.setName("excludedClients");
         excludedClient.setLabel("Clients to exclude for profile verificaction, separate by comma.");
         excludedClient.setType(ProviderConfigProperty.STRING_TYPE);
         configProperties.add(excludedClient);

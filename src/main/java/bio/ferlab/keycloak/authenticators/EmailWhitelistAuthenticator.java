@@ -18,7 +18,7 @@ public class EmailWhitelistAuthenticator implements Authenticator {
     @Override
     public void authenticate(AuthenticationFlowContext context) {
         AuthenticatorConfigModel config = context.getAuthenticatorConfig();
-        List<String> emails = Arrays.asList(config.getConfig().get("email.whitelist.list").split("\n"));
+        List<String> emails = Arrays.asList(config.getConfig().get("emailWhitelist").split("\n"));
         String email = context.getUser().getEmail();
         if (email != null && emails.contains(email)) {
             context.success();

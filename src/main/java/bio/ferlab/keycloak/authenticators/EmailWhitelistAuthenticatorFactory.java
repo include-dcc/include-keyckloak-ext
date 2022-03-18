@@ -51,7 +51,7 @@ public class EmailWhitelistAuthenticatorFactory implements AuthenticatorFactory,
     static {
         ProviderConfigProperty property;
         property = new ProviderConfigProperty();
-        property.setName("email.whitelist.list");
+        property.setName("emailWhitelist");
         property.setLabel("List of whitelisted emails");
         property.setType(ProviderConfigProperty.TEXT_TYPE);
         property.setHelpText("One item per line");
