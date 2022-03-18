@@ -9,15 +9,14 @@ import org.keycloak.authentication.AuthenticationFlowContext;
 import org.keycloak.authentication.AuthenticationFlowError;
 import org.keycloak.authentication.Authenticator;
 import org.keycloak.connections.httpclient.HttpClientProvider;
-import org.keycloak.models.AuthenticatorConfigModel;
-import org.keycloak.models.KeycloakSession;
-import org.keycloak.models.RealmModel;
-import org.keycloak.models.UserModel;
+import org.keycloak.models.*;
 import org.keycloak.models.utils.FormMessage;
 import org.keycloak.util.JsonSerialization;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public class UserProfileExistAuthenticator implements Authenticator {
@@ -27,9 +26,12 @@ public class UserProfileExistAuthenticator implements Authenticator {
     public void authenticate(AuthenticationFlowContext context) {
         AuthenticatorConfigModel config = context.getAuthenticatorConfig();
         String userApi = config.getConfig().get("user.profile.api.uri");
+        List<String> excludedClients = Arrays.asList(config.getConfig().get("user.profile.excluded.clients").split(","));
+
+        String clientId = context.getAuthenticationSession().getClient().getClientId();
 
         try {
-            if (userExists(context, userApi)) {
+            if (excludedClients.contains(clientId) || userExists(context, userApi)) {
                 context.success();
             } else {
                 String errorMessage = config.getConfig().get("user.profile.error.message");

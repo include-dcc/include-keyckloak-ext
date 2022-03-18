@@ -8,6 +8,7 @@ import org.keycloak.models.AuthenticationExecutionModel;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 import org.keycloak.provider.ProviderConfigProperty;
+import org.keycloak.provider.ProviderConfigurationBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,12 @@ public class UserProfileExistAuthenticatorFactory implements AuthenticatorFactor
         errorMessage.setLabel("Message to display to users if profile does not exist");
         errorMessage.setType(ProviderConfigProperty.STRING_TYPE);
         configProperties.add(errorMessage);
+
+        ProviderConfigProperty excludedClient = new ProviderConfigProperty();
+        excludedClient.setName("user.profile.excluded.clients");
+        excludedClient.setLabel("Clients to exclude for profile verificaction, separate by comma.");
+        excludedClient.setType(ProviderConfigProperty.STRING_TYPE);
+        configProperties.add(excludedClient);
 
     }
 
