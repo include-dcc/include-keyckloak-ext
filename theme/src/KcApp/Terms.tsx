@@ -1,5 +1,5 @@
 import {memo} from "react";
-import {Template} from "keycloakify/lib/components/Template";
+import {Template} from "./Template";
 import type {KcProps} from "keycloakify";
 import {useKcMessage} from "keycloakify/lib/i18n/useKcMessage";
 import {useCssAndCx} from "tss-react";

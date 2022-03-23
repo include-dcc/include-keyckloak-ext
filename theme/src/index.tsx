@@ -8,7 +8,9 @@ import "./index.scss";
 ReactDOM.render(
         <KcApp kcContext={kcContext!} {...{
             ...defaultKcProps,
-            "kcHtmlClass": ["login-mdc"]
+            "kcHtmlClass": ["login-mdc"],
+            "kcFormSocialAccountContentClass": ["social-providers"],
+            "kcFormSocialAccountClass": []
             // "kcFormCardClass": [...defaultKcProps.kcFormCardClass, classNames.kcFormCardClass],
             // "kcButtonPrimaryClass": [...defaultKcProps.kcButtonPrimaryClass, classNames.kcButtonPrimaryClass],
             // "kcInputClass": [...defaultKcProps.kcInputClass, classNames.kcInputClass]

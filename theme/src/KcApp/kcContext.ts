@@ -10,7 +10,8 @@ export const {kcContext} = getKcContext<
     }>({
     /* Uncomment to test outside of keycloak, ⚠️ don't forget to run 'yarn keycloak' at least once */
     // "mockPageId": "terms.ftl",
-    // "mockPageId": "login-update-profile.ftl",
+    "mockPageId": "login-update-profile.ftl",
+    // "mockPageId": "login.ftl",
     /**
      * Customize the simulated kcContext that will let us
      * dev the page outside keycloak (with auto-reload)
@@ -20,11 +21,15 @@ export const {kcContext} = getKcContext<
             "pageId": "login.ftl",
             "social": {
                 "providers": [
-
                     {
                         "providerId": "google",
                         "alias": "google",
                         "displayName": "Google"
+                    },
+                    {
+                        "providerId": "orcid",
+                        "alias": "orcid",
+                        "displayName": "Orcid"
                     }
                 ]
             },
